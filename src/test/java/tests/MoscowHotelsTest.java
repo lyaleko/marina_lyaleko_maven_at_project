@@ -13,11 +13,11 @@ public class MoscowHotelsTest extends BasicBookingSteps {
     @Test
     public void isHotelsTest() {
 
-        driver.findElement(By.xpath(page.searchPlaceXPath)).sendKeys("Москва");
+        driver.findElement(By.xpath(page.searchPlaceInput)).sendKeys("Москва");
         driver.findElement(By.xpath(page.calendarRange)).click();
         driver.findElement(By.xpath(String.format("//td[@data-date='%s']", this.getDateString(0)) )).click();
         driver.findElement(By.xpath(String.format("//td[@data-date='%s']", this.getDateString(7)) )).click();
-        driver.findElement(By.xpath(page.checkPricesXPath)).click();
+        driver.findElement(By.xpath(page.checkPricesButton)).click();
 
         WebElement webElement = new WebDriverWait(driver, 1000).until(
                 ExpectedConditions.elementToBeClickable (By.xpath("//a[contains(text(), 'сначала самая низкая')]")));

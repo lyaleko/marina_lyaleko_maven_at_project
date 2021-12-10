@@ -22,7 +22,7 @@
 
                 <configuration>
                     <includes>
-                        <include>PeopleSuits</include>
+                        <include>tests</include>
                     </includes>
 
                 </configuration>

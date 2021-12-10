@@ -7,6 +7,7 @@ import pages.BookingPage;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class BasicBookingSteps {
@@ -31,7 +32,7 @@ public class BasicBookingSteps {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, days);
-        var date = cal.getTime();
+        Date date = cal.getTime();
         return formatter.format(date);
     }
 }

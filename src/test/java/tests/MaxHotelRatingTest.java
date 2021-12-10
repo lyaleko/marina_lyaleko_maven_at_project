@@ -13,11 +13,11 @@ public class MaxHotelRatingTest extends BasicBookingSteps {
     @Test
     public void findMaxRaiting(){
 
-        driver.findElement(By.xpath(page.searchPlaceXPath)).sendKeys("Москва");
+        driver.findElement(By.xpath(page.searchPlaceInput)).sendKeys("Москва");
         driver.findElement(By.xpath(page.calendarRange)).click();
         driver.findElement(By.xpath(String.format("//td[@data-date='%s']", this.getDateString(0)) )).click();
         driver.findElement(By.xpath(String.format("//td[@data-date='%s']", this.getDateString(7)) )).click();
-        driver.findElement(By.xpath(page.checkPricesXPath)).click();
+        driver.findElement(By.xpath(page.checkPricesButton)).click();
         driver.findElement(By.xpath(page.menuExtraSorting)).click();
         driver.findElement(By.xpath(page.sortingByScorePrice)).click();
 
