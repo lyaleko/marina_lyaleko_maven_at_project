@@ -10,10 +10,7 @@ public class BookingPage {
     public String checkPricesButton = "//button[@data-sb-id='main']";
     public String selectCurrency = "//button[@data-modal-aria-label  = 'Выберите валюту']";
     public String selectLanguage = "//button[@data-modal-aria-label  = 'Выберите язык']";
-    public String textTooltipCurrency = "//button[@data-tooltip-text='Выберите валюту']";
-    public String textTooltipLanguage = "//button[@data-tooltip-text='Выберите язык']";
-    //   "//div[@class= 'bui-tooltip__content']"
-
+    public String textTooltip = "//div[@class= 'bui-tooltip__content']";
 
     /** ResultPage **/
 

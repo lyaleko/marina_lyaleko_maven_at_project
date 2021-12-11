@@ -18,13 +18,13 @@ public class ToolTipTest extends BasicBookingSteps {
         actions.moveToElement(element);
         actions.perform();
 
-        Assert.assertEquals("Incorrect text Tooltip Currency ","Выберите валюту" , driver.findElement(By.xpath(page.textTooltipCurrency)).getText());
+        Assert.assertEquals("Incorrect text Tooltip Currency ", "Выберите валюту", driver.findElement(By.xpath(page.textTooltip)).getText());
 
         element = driver.findElement(By.xpath(page.selectLanguage));
 
         actions.moveToElement(element);
         actions.perform();
 
-        Assert.assertEquals("Incorrect text Tooltip Language ", "Выберите язык", driver.findElement(By.xpath(page.textTooltipLanguage)).getText());
+        Assert.assertEquals("Incorrect text Tooltip Language ", "Выберите язык", driver.findElement(By.xpath(page.textTooltip)).getText());
     }
 }
