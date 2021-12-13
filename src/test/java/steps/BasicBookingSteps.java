@@ -19,7 +19,7 @@ public class BasicBookingSteps {
     public void before(){
         setTimeouts(30);
         driver.manage().window().maximize();
-        driver.navigate().to("https://www.booking.com/");
+       // driver.navigate().to("https://www.booking.com/");
     }
 
     public void setTimeouts(int time) {
