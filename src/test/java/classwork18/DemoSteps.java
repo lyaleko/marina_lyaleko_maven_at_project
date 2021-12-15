@@ -7,12 +7,12 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.BookingPage;
+import pages.booking.BookingHomePage;
 
 public class DemoSteps {
 
     protected WebDriver driver = new ChromeDriver();
-    protected BookingPage page = new BookingPage();
+    protected BookingHomePage page = new BookingHomePage(driver); //added (driver)
 
     @Given("I open test site")
     public void iOpenTestSite() {
@@ -21,8 +21,8 @@ public class DemoSteps {
 
     @When("I feel the form")
     public void iFeelTheForm() {
-        driver.findElement(By.xpath(page.searchPlaceInput)).sendKeys("Москва");
-        driver.findElement(By.xpath(page.checkPricesButton)).click();
+        driver.findElement(By.xpath(page.SEARCH_PLACE_INPUT)).sendKeys("Москва");
+        driver.findElement(By.xpath(page.SEARCH_BUTTON)).click();
     }
 
     @Then("I see greeting message")
