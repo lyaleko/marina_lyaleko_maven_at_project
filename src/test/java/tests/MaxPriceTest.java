@@ -7,28 +7,29 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
-import steps.BasicBookingSteps;
+import steps.BookingBeforeAfter;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
-public class MaxPriceTest extends BasicBookingSteps {
+public class MaxPriceTest extends BookingBeforeAfter {
 
     @Test
     public void highestPriceTest() {
 
-        driver.findElement(By.xpath(page.searchPlaceInput)).sendKeys("Париж");
-        driver.findElement(By.xpath(page.calendarRange)).click();
-        driver.findElement(By.xpath(String.format("//td[@data-date='%s']", this.getDateString(3)) )).click();
-        driver.findElement(By.xpath(String.format("//td[@data-date='%s']", this.getDateString(10)) )).click();
-        driver.findElement(By.xpath(page.selectGuests)).click();
+        homePage.goToBookingMain();
+        homePage.inputCity("Париж");
+        homePage.setDatesCalendar(3,10);
+/*        driver.findElement(By.xpath(homePage.EXTRA_PARAM_INPUT)).click();
         driver.findElement(By.xpath("//button[@aria-label='Взрослых: увеличить количество']")).click();
         driver.findElement(By.xpath("//button[@aria-label='Взрослых: увеличить количество']")).click();
-        driver.findElement(By.xpath("//button[@aria-label='Номера: увеличить количество']")).click();
-        driver.findElement(By.xpath(page.checkPricesButton)).click();
-        WebElement filterPrice = driver.findElement(By.xpath("//div[@id='searchboxInc']//div[@data-filters-group='pri']//div[contains(text(), '+')]")); // find filter price
-        int expectedMaxPrice = Integer.parseInt(filterPrice.getText().replaceAll("\\D+", "")); //parse to int
-        filterPrice.click(); // apply filterprice
+        driver.findElement(By.xpath("//button[@aria-label='Номера: увеличить количество']")).click();*/ // TODO
+
+        homePage.setNumberOfAdults(4);
+        homePage.setNumberOfRooms(2);
+        homePage.submitSearch();
+        driver.findElement(By.xpath(resultPage.MAX_PRICE_FILTER));
+        int expectedMaxPrice = resultPage.getMaxFilterPrice();
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); // turn off implicitlyWait
 
@@ -36,9 +37,9 @@ public class MaxPriceTest extends BasicBookingSteps {
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(5))
                 .ignoring(NoSuchElementException.class)
-                .until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".bui-spinner.bui-spinner--size-large")));// expect spinner, then continue
+                .until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(resultPage.SPINNER)));// expect spinner, then continue
 
-        driver.findElement(By.xpath("//a[contains(text(), 'сначала самая низкая')]")).click();
+        driver.findElement(By.xpath(resultPage.MIN_PRICE_MENU)).click();
 
 
 
@@ -46,12 +47,12 @@ public class MaxPriceTest extends BasicBookingSteps {
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(5))
                 .ignoring(NoSuchElementException.class)
-                .until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".bui-spinner.bui-spinner--size-large")));// expect spinner, then continue
+                .until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(resultPage.SPINNER)));// expect spinner, then continue
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); // turn on implicitlyWait
 
         WebElement webElement2 = driver.findElement(
-                By.xpath("//div[@id='search_results_table']//div[@data-testid='property-card'][1]//div[@data-testid='price-and-discounted-price']//span"));
+                By.xpath(resultPage.FIRST_PRICE));
 
         String actualMaxPriceText = Arrays.stream(webElement2.getText().split("BYN")).skip(1).findFirst().get().trim().replace(" ", "");
 
