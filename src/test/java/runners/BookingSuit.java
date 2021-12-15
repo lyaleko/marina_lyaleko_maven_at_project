@@ -9,14 +9,4 @@ import tests.*;
 
 public class BookingSuit {
 
-/*    public void myTest() {
-        System.out.println("Test");
-    }
-
-    @Test
-    public void run10() {
-        for (int i = 0; i < 10; i++) {
-            myTest();
-        }
-    }*/
 }
