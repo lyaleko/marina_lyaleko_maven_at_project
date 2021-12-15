@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import pages.GooglePage;
+import pages.google.GooglePage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -40,7 +40,7 @@ public class GoogleResultTest{
                 .perform();
 
         driver.navigate().to("https://google.com");
-        driver.findElement(By.xpath(page.searchWordInGoogleXPath)).click();
+        driver.findElement(By.xpath(page.GOOGLE_SEARCH)).click();
 
         make
                 .keyDown(Keys.LEFT_CONTROL)
@@ -50,7 +50,7 @@ public class GoogleResultTest{
                 .build()
                 .perform();
 
-        int countOfBlocks = driver.findElements(By.xpath(page.boxResultXPath)).size();
+        int countOfBlocks = driver.findElements(By.xpath(page.RESULT_BOX)).size();
         int countOfMatchesWords = driver.findElements(By.xpath("//div[@class = 'g' and contains(.,'tutorial')]")).size();
         Assert.assertEquals("Number of findings are incorrect",countOfBlocks,countOfMatchesWords);
     }
