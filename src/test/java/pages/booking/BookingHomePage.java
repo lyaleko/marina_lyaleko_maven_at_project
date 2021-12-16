@@ -3,6 +3,7 @@ package pages.booking;
 import driver.BasicDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import utils.DateParser;
 
 public class BookingHomePage {
@@ -21,6 +22,7 @@ public class BookingHomePage {
     public static final String LANGUAGE_BUTTON = "//button[@data-modal-aria-label  = 'Выберите язык']";
     public static final String TOOLTIP_TEXT = "//div[@class= 'bui-tooltip__content']";
     public static final String DATE_CALENDAR_SELECT = "//td[@data-date='%s']";
+    public static final String REGISTER_BUTTON = "//a[@class='bui-button bui-button--secondary js-header-login-link']";
 
     public BookingHomePage(WebDriver driver) {
         this.driver = driver;
@@ -29,6 +31,7 @@ public class BookingHomePage {
     public void goToBookingMain() {
         driver.navigate().to(BOOKING_SITE);
     }
+
     public void searchCity (String cityName){
         driver.findElement(By.xpath(SEARCH_PLACE_INPUT)).sendKeys(cityName);
         driver.findElement(By.xpath(SEARCH_BUTTON)).click();
@@ -69,4 +72,22 @@ public class BookingHomePage {
             performPlusMinusInput("Номера", "увеличить", number - 1);
         }
     }
+
+    public void clickOnRegisterButton(){
+        driver.findElement(By.xpath(REGISTER_BUTTON)).click();
+
+    }
+    public WebElement getCurrencyField() {
+        return driver.findElement(By.xpath(CURRENCY_BUTTON));
+    }
+    public String getToolTipText() {
+        return driver.findElement(By.xpath(TOOLTIP_TEXT)).getText();
+    }
+
+
+    public WebElement getLanguageField() {
+        return driver.findElement(By.xpath(LANGUAGE_BUTTON));
+
+    }
+
 }

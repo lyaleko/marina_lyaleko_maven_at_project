@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import pages.booking.BookingHomePage;
 import pages.booking.BookingResultPage;
+import pages.booking.BookingSignInPage;
+import utils.Actions;
 import utils.ExplicitWait;
 import java.util.concurrent.TimeUnit;
 
@@ -14,6 +16,8 @@ public abstract class BookingBeforeAfter {
     protected BookingHomePage homePage = new BookingHomePage(BasicDriver.getWebDriver());
     protected BookingResultPage resultPage = new BookingResultPage(BasicDriver.getWebDriver());
     protected ExplicitWait wait = new ExplicitWait();
+    protected BookingSignInPage signInPage = new BookingSignInPage(BasicDriver.getWebDriver());
+    protected Actions actions = new Actions(BasicDriver.getWebDriver());
 
     @Before
     public void before(){

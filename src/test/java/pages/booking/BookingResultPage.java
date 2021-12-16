@@ -19,6 +19,7 @@ public class BookingResultPage {
     public static final String MIN_PRICE_MENU = "//a[contains(text(), 'сначала самая низкая')]";
     public static final String PROPERTY_CARD = "//div[@data-testid='property-card'][%d]";
     public static final String FIRST_PRICE = "//div[@id='search_results_table']//div[@data-testid='property-card'][1]//div[@data-testid='price-and-discounted-price']//span";
+    public static final String HOTEL_RATING = "//div[@data-testid = 'review-score-right-component']/div[contains(@aria-label,' ')]";
 
     public BookingResultPage(WebDriver driver) {
     }
@@ -63,6 +64,6 @@ public class BookingResultPage {
         ((JavascriptExecutor) driver).executeScript(String.format("arguments[0].style.color = '%s'", color), element);
     }
     public double getHotelRating(){
-        return Double.parseDouble((driver.findElement(By.xpath("//div[@data-testid = 'review-score-right-component']/div[contains(@aria-label,' ')]")).getText()));
+        return Double.parseDouble((driver.findElement(By.xpath(HOTEL_RATING)).getText()));
     }
 }

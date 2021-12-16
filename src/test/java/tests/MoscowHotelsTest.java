@@ -14,6 +14,6 @@ public class MoscowHotelsTest extends BookingBeforeAfter {
         homePage.setDatesCalendar(0,7);
         homePage.submitSearch();
 
-        Assert.assertTrue(resultPage.getDefiniteCard(1).isDisplayed());
+        Assert.assertTrue("There is no any hotel ",resultPage.getDefiniteCard(1).isDisplayed());
     }
 }
