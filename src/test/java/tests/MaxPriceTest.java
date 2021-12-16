@@ -41,8 +41,6 @@ public class MaxPriceTest extends BookingBeforeAfter {
 
         driver.findElement(By.xpath(resultPage.MIN_PRICE_MENU)).click();
 
-
-
         new FluentWait<>(driver)                                          // turn on FluentWait
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(5))
