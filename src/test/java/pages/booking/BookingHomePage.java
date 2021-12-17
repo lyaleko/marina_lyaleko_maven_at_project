@@ -1,6 +1,5 @@
 package pages.booking;
 
-import driver.BasicDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,10 +22,12 @@ public class BookingHomePage {
     public static final String TOOLTIP_TEXT = "//div[@class= 'bui-tooltip__content']";
     public static final String DATE_CALENDAR_SELECT = "//td[@data-date='%s']";
     public static final String REGISTER_BUTTON = "//a[@class='bui-button bui-button--secondary js-header-login-link']";
-
-    public BookingHomePage(WebDriver driver) {
-        this.driver = driver;
-    }
+    public static final String AVATAR_BUTTON = "//div[@class='bui-avatar-block']";
+    public static final String ACCOUNT_TITLE = "//span[@id = 'profile-menu-trigger--title']";
+    public static final String CLOSE_POPUP_BUTTON = "//button[@class='modal-mask-closeBtn']";
+    public static final String CONTACT_BUTTON = "//a[@data-bui-component='Tooltip']//span[@class='bui-button__icon']";
+    public static final String NOTIFICATION_BUTTON = "//nav[1]/div[2]/div[4]/button/span/div/span[1]";
+    public static final String REGISTER_PROPERTY = "//a[@class='bui-button bui-button--light bui-traveller-header__product-action']";
 
     public void goToBookingMain() {
         driver.navigate().to(BOOKING_SITE);
@@ -75,19 +76,29 @@ public class BookingHomePage {
 
     public void clickOnRegisterButton(){
         driver.findElement(By.xpath(REGISTER_BUTTON)).click();
-
     }
+
     public WebElement getCurrencyField() {
         return driver.findElement(By.xpath(CURRENCY_BUTTON));
     }
+
     public String getToolTipText() {
         return driver.findElement(By.xpath(TOOLTIP_TEXT)).getText();
     }
 
-
     public WebElement getLanguageField() {
         return driver.findElement(By.xpath(LANGUAGE_BUTTON));
-
     }
 
+    public String getTextAccountTitle() {
+        return String.format(driver.findElement(By.xpath(ACCOUNT_TITLE)).getText());
+    }
+
+    public void closePopup(){
+        driver.findElement(By.xpath(CLOSE_POPUP_BUTTON)).click();
+    }
+
+    public BookingHomePage(WebDriver driver) {
+        this.driver = driver;
+    }
 }
