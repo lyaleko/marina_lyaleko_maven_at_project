@@ -1,4 +1,4 @@
-package tests;
+package tests.google;
 
 import org.junit.Assert;
 import org.junit.Before;
