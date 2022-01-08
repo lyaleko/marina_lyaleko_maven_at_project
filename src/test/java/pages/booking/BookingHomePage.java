@@ -1,5 +1,6 @@
 package pages.booking;
 
+import driver.BasicDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,7 @@ import utils.DateParser;
 
 public class BookingHomePage {
 
-    WebDriver driver;
+    WebDriver driver = BasicDriver.getWebDriver();
     DateParser date = new DateParser();
 
     public static final String BOOKING_SITE = "https://booking.com";
@@ -98,7 +99,5 @@ public class BookingHomePage {
         driver.findElement(By.xpath(CLOSE_POPUP_BUTTON)).click();
     }
 
-    public BookingHomePage(WebDriver driver) {
-        this.driver = driver;
-    }
+
 }

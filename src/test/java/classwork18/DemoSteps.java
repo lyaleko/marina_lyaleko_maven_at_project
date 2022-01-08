@@ -12,7 +12,7 @@ import pages.booking.BookingHomePage;
 public class DemoSteps {
 
     protected WebDriver driver = new ChromeDriver();
-    protected BookingHomePage page = new BookingHomePage(driver); //added (driver)
+    protected BookingHomePage page = new BookingHomePage(); //added (driver)
 
     @Given("I open test site")
     public void iOpenTestSite() {

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public abstract class BookingBeforeAfter {
 
     protected WebDriver driver = BasicDriver.getWebDriver();
-    protected BookingHomePage bookingHomePage = new BookingHomePage(BasicDriver.getWebDriver());
+    protected BookingHomePage bookingHomePage = new BookingHomePage();
     protected BookingResultPage bookingResultPage = new BookingResultPage(BasicDriver.getWebDriver());
     protected ExplicitWait wait = new ExplicitWait();
     protected BookingSignInPage bookingSignInPage = new BookingSignInPage(BasicDriver.getWebDriver());
