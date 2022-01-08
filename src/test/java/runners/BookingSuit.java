@@ -2,7 +2,7 @@ package runners;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import tests.*;
+import tests.booking.*;
 
 @Suite.SuiteClasses({ToolTipTest.class, ColorTest.class, MaxHotelRatingTest.class, MaxPriceTest.class, MoscowHotelsTest.class})
 @RunWith(Suite.class)

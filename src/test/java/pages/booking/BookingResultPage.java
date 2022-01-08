@@ -18,6 +18,7 @@ public class BookingResultPage {
     public static final String MAX_PRICE_FILTER = "//div[@id='searchboxInc']//div[@data-filters-group='pri']//div[contains(text(), '+')]";
     public static final String MIN_PRICE_MENU = "//a[contains(text(), 'сначала самая низкая')]";
     public static final String PROPERTY_CARD = "//div[@data-testid='property-card'][%d]";
+    public static final String WISHLIST_BUTTON = "//div[@data-testid='property-card'][%d]//button[@data-testid='wishlist-button']";
     public static final String FIRST_PRICE = "//div[@id='search_results_table']//div[@data-testid='property-card'][1]//div[@data-testid='price-and-discounted-price']//span";
     public static final String HOTEL_RATING = "//div[@data-testid = 'review-score-right-component']/div[contains(@aria-label,' ')]";
 
@@ -27,6 +28,7 @@ public class BookingResultPage {
     public void openExtraMenu(){
         driver.findElement(By.xpath(EXTRA_MENU_BUTTON)).click();
     }
+
     public void sortByScorePrice(){
         driver.findElement(By.xpath(SORTING_BY_SCORE_PRICE)).click();
     }
@@ -37,6 +39,10 @@ public class BookingResultPage {
 
     public WebElement getDefiniteCard(int cardNumber) {
         return driver.findElement(By.xpath(String.format(PROPERTY_CARD, cardNumber)));
+    }
+
+    public WebElement getDefiniteHeart(int heartNumber) {
+        return driver.findElement(By.xpath(String.format(WISHLIST_BUTTON, heartNumber)));
     }
 
     public int getMaxFilterPrice(){
@@ -66,4 +72,5 @@ public class BookingResultPage {
     public double getHotelRating(){
         return Double.parseDouble((driver.findElement(By.xpath(HOTEL_RATING)).getText()));
     }
+
 }

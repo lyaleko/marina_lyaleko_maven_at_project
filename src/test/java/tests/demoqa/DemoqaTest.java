@@ -1,4 +1,4 @@
-package tests;
+package tests.demoqa;
 
 import org.junit.Before;
 import org.junit.Test;
